@@ -1,19 +1,19 @@
-<mxfile host="" modified="2020-06-03T08:53:13.051Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.1 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="HsTwDRj9etM991Pu6Zx6" version="13.1.3">
+<mxfile host="" modified="2020-06-03T22:12:32.998Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Code/1.45.1 Chrome/78.0.3904.130 Electron/7.2.4 Safari/537.36" etag="ZBMKXkdaI6CWVkehjc8g" version="13.1.3">
     <diagram id="6hGFLwfOUW9BJ-s0fimq" name="Page-1">
-        <mxGraphModel dx="1002" dy="556" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+        <mxGraphModel dx="733" dy="336" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
             <root>
                 <mxCell id="0"/>
                 <mxCell id="1" parent="0"/>
                 <mxCell id="19" value="" style="rounded=0;whiteSpace=wrap;html=1;strokeColor=none;" parent="1" vertex="1">
                     <mxGeometry width="830" height="1110" as="geometry"/>
                 </mxCell>
-                <mxCell id="2" value="Users&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;name&lt;br&gt;username&lt;br&gt;email&lt;br&gt;password&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Has many Wallets&lt;br&gt;Has many Transactions through Wallets" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="2" value="Users&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;name&lt;br&gt;username&lt;br&gt;email&lt;br&gt;password&lt;br&gt;current_wallet&lt;br&gt;created_at&lt;br&gt;updated_at&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Has many Wallets&lt;br&gt;Has many Transactions through Wallets" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="10" y="210" width="250" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="3" value="Wallet&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;user_id&lt;br&gt;name&lt;br&gt;type&lt;br&gt;btc_balance&lt;br&gt;usd_balance&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Belongs to a User&lt;br&gt;Has many Transactions" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="3" value="Wallet&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;user_id&lt;br&gt;name&lt;br&gt;restriction_type&lt;br&gt;btc_balance&lt;br&gt;usd_balance&lt;br&gt;created_at&lt;br&gt;updated_at&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Belongs to a User&lt;br&gt;Has many Transactions" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="289" y="210" width="250" height="240" as="geometry"/>
                 </mxCell>
-                <mxCell id="4" value="Transaction&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;wallet_id&lt;br&gt;type&lt;br&gt;wallet&lt;br&gt;amount&lt;br&gt;price&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Belongs to a Wallet&lt;br&gt;Belongs to a User through a Wallet" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                <mxCell id="4" value="Transaction&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;id&lt;br&gt;wallet_id&lt;br&gt;order_type&lt;br&gt;wallet&lt;br&gt;amount&lt;br&gt;price&lt;br&gt;________________________________&lt;br&gt;&lt;br&gt;Belongs to a Wallet&lt;br&gt;Belongs to a User through a Wallet" style="rounded=0;whiteSpace=wrap;html=1;" parent="1" vertex="1">
                     <mxGeometry x="570" y="210" width="250" height="240" as="geometry"/>
                 </mxCell>
                 <mxCell id="6" value="&lt;font style=&quot;font-size: 36px&quot;&gt;Bitcoin Matrix&lt;/font&gt;" style="text;html=1;align=left;verticalAlign=middle;resizable=0;points=[];autosize=1;" parent="1" vertex="1">

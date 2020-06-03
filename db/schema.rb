@@ -14,25 +14,31 @@
 ActiveRecord::Schema.define(version: 20200602225523) do
 
   create_table "transactions", force: :cascade do |t|
-    t.integer "wallet_id"
-    t.string  "type"
-    t.string  "amount"
-    t.string  "price"
+    t.integer  "wallet_id"
+    t.string   "order_type"
+    t.string   "amount"
+    t.string   "price"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", force: :cascade do |t|
-    t.string "name"
-    t.string "username"
-    t.string "email"
-    t.string "password_digest"
+    t.string   "name"
+    t.string   "username"
+    t.string   "email"
+    t.string   "password_digest"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "wallets", force: :cascade do |t|
-    t.integer "user_id"
-    t.string  "name"
-    t.string  "type"
-    t.string  "btc_balance"
-    t.string  "usd_balance"
+    t.integer  "user_id"
+    t.string   "name"
+    t.string   "restriction_type"
+    t.string   "btc_balance"
+    t.string   "usd_balance"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
 end
