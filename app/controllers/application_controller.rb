@@ -10,11 +10,21 @@ class ApplicationController < Sinatra::Base
   end
 
   get "/" do
-    erb :welcome
+    erb :index
   end
 
   get "/trade" do
     erb :trade
   end
 
+  helpers do
+    def logged_in?
+      session.has_key?(:user_id)
+    end
+
+    def current_user
+      User.find(session[:user_id])
+    end
+  end
+  
 end

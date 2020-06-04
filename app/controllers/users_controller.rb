@@ -1,46 +1,66 @@
 class UsersController < ApplicationController
 
     get "/login" do
-        erb :login
+        return redirect "/wallets/select" if logged_in? #Prevents login if already logged in
+        erb :"users/login"
     end
 
     post "/login" do
-        user = user.find_by(email: params[:email])
+        user = User.find_by(email: params[:email])
         if user.authenticate(params[:password])
-            sessions[:user_id] = user.id
-            redirect "/trade"
+            session[:user_id] = user.id
+            redirect "/wallets/select"
         else
-            @email = params[:email]
-            @error_message = "Your email or password is incorrect. Please try again."
-            get "/login"
+            redirect "/login"
         end
     end
 
     get "/signup" do
+        return redirect "/wallets/select" if logged_in? #Prevents sign up if already logged in
+        erb :"users/new"
     end
 
     post "/signup" do
+        user = User.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+        if user.valid?
+            session[:user_id] = user.id
+            redirect "/wallets/select"
+        else
+            redirect "/signup" 
+        end
     end
 
     get "/logout" do
-    end
-
-    get "/users/new" do
-    end
-
-    post "/users" do
+        session.destroy
+        redirect "/login"
     end
 
     get "/users/:id" do
+        @user = User.find(params[:id])
+        erb :"users/show"
     end
 
     get "/users/:id/edit" do
+        @user = User.find(params[:id])
+        erb :"users/edit"
     end
 
     patch "/users/:id" do
+        return redirect "/login" if current_user.id != params[:id] #Checks permissions
+        user = User.find(params[:id])
+        user.update(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
+        if user.valid?
+            session[:user_id] = user.id
+            redirect "/users/#{params[:id]}/edit"
+        else
+            redirect "/users/#{params[:id]}/edit"
+        end
     end
 
     delete "/users/:id" do
+        return redirect "/login" if current_user.id != params[:id]
+        User.find(params[:id]).destroy
+        redirect "/"
     end
 
 end

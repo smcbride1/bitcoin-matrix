@@ -16,8 +16,8 @@ ActiveRecord::Schema.define(version: 20200602225523) do
   create_table "transactions", force: :cascade do |t|
     t.integer  "wallet_id"
     t.string   "order_type"
-    t.string   "amount"
-    t.string   "price"
+    t.decimal  "amount"
+    t.decimal  "price"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -35,8 +35,8 @@ ActiveRecord::Schema.define(version: 20200602225523) do
     t.integer  "user_id"
     t.string   "name"
     t.string   "restriction_type"
-    t.string   "btc_balance"
-    t.string   "usd_balance"
+    t.decimal  "btc_balance"
+    t.decimal  "usd_balance"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

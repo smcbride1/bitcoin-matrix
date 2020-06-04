@@ -4,8 +4,8 @@ class CreateWallets < ActiveRecord::Migration
       t.integer :user_id
       t.string :name
       t.string :restriction_type
-      t.string :btc_balance
-      t.string :usd_balance
+      t.decimal :btc_balance
+      t.decimal :usd_balance
       t.datetime :created_at
       t.datetime :updated_at
     end

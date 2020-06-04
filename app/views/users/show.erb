@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= @user.username %></title>
+    </head>
+    <body>
+        <h2><%= @user.username %></h2>
+        <% wallets = @user.wallets.select { |wallet| wallet.restriction_type == "competitive" } %>
+        <% wallet_value = @user.wallets.map { |wallet| wallet.usd_balance + (wallet.btc_balance * Bittrex.btc_price)}.sum %>
+        <h3>Total Value: <%= wallet_value %></h3>
+    </body>
+</html>
