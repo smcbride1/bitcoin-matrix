@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Edit Wallet</title>
+    </head>
+    <body>
+        <h2>Edit Wallet</h2>
+        <form method="POST" action="/wallets/<%= @wallet.id %>">
+            <input type="hidden" name="_method" value="patch"> 
+            <h3>Name</h3>
+            <input type="text" id="name" name="name" value="<%= @wallet.name %>">
+            <% if @wallet.restriction_type == "casual" %>
+                <h3>BTC Balance</h3>
+                <input type="text" id="btc_balance" name="btc_balance" value="<%= @wallet.btc_balance %>">
+                <h3>USD Balance</h3>
+                <input type="text" id="usd_balance" name="usd_balance" value="<%= @wallet.usd_balance %>">
+                <input type="submit" id="submit" value="Edit">
+            <% end %>
+        </form>
+    </body>
+</html>

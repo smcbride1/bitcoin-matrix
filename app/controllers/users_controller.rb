@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
 
     get "/login" do
-        return redirect "/wallets/select" if logged_in? #Prevents login if already logged in
+        return redirect "/wallets" if logged_in? #Prevents login if already logged in
         erb :"users/login"
     end
 
@@ -9,14 +9,14 @@ class UsersController < ApplicationController
         user = User.find_by(email: params[:email])
         if user.authenticate(params[:password])
             session[:user_id] = user.id
-            redirect "/wallets/select"
+            redirect "/wallets"
         else
             redirect "/login"
         end
     end
 
     get "/signup" do
-        return redirect "/wallets/select" if logged_in? #Prevents sign up if already logged in
+        return redirect "/wallets" if logged_in? #Prevents sign up if already logged in
         erb :"users/new"
     end
 
@@ -24,7 +24,7 @@ class UsersController < ApplicationController
         user = User.create(name: params[:name], username: params[:username], email: params[:email], password: params[:password])
         if user.valid?
             session[:user_id] = user.id
-            redirect "/wallets/select"
+            redirect "/wallets"
         else
             redirect "/signup" 
         end

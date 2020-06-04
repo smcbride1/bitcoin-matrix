@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title><%= @wallet.name %></title>
+    </head>
+    <body>
+        <form method="GET" action="/wallets/<%= @wallet.id %>/edit">
+            <input type="submit" id="edit" value="Edit">
+        </form>
+        <form method="POST" action="/wallets/<%= @wallet.id %>">
+            <input type="hidden" name="_method" value="delete">
+            <input type="submit" id="delete" value="Delete">
+        </form>
+        <h2><%= @wallet.name %></h2>
+        <h3><%= @wallet.restriction_type %></h2>
+        <h3>BTC Balance: <%= @wallet.btc_balance %></h3>
+        <h3>USD Balance: <%= @wallet.usd_balance %></h3>
+    </body>
+</html>
