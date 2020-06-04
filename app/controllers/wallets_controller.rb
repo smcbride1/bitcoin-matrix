@@ -79,6 +79,57 @@ class WalletsController < ApplicationController
     end
 
     get "/wallets/:id/transactions" do
+
+        @wallet = Wallet.find(params[:id])
+        return redirect "/wallets" if @wallet.user != current_user
+
+        erb :"wallets/transactions"
+
+    end
+
+    get "/wallets/:id/trade" do
+
+        @wallet = Wallet.find(params[:id])
+        return redirect "/wallets" if @wallet.user != current_user
+
+        erb :"wallets/trade"
+
+    end
+
+    post "/wallets/:id/buy" do
+
+        btc_price = Bittrex.btc_price
+        amount = params[:buy_amount].to_f
+        wallet = Wallet.find(params[:id])
+        return redirect "/wallets" if wallet.user != current_user
+
+        return redirect "/wallets/#{wallet.id}/trade" if 0 >= wallet.usd_balance #Makes sure usd balance is greater than 0
+        return redirect "/wallets/#{wallet.id}/trade" if amount > (wallet.usd_balance / btc_price) #Makes sure desired buy amount is not greater than balance
+
+        Transaction.create(wallet_id: wallet.id, order_type: "buy", amount: amount, price: btc_price)
+        wallet.update(usd_balance: (wallet.usd_balance - amount * btc_price))
+        wallet.update(btc_balance: (wallet.btc_balance + amount))
+
+        redirect "/wallets/#{wallet.id}/trade"
+
+    end
+
+    post "/wallets/:id/sell" do
+
+        btc_price = Bittrex.btc_price
+        amount = params[:sell_amount].to_f
+        wallet = Wallet.find(params[:id])
+        return redirect "/wallets" if wallet.user != current_user
+
+        return redirect "/wallets/#{wallet.id}/trade" if 0 >= wallet.btc_balance #Makes sure btc balance is greater than 0
+        return redirect "/wallets/#{wallet.id}/trade" if amount > wallet.btc_balance #Makes sure desired sell amount is not greater than balance
+
+        Transaction.create(wallet_id: wallet.id, order_type: "sell", amount: amount, price: btc_price)
+        wallet.update(btc_balance: (wallet.btc_balance - amount))
+        wallet.update(usd_balance: (wallet.usd_balance + (amount * btc_price)))
+
+        redirect "/wallets/#{wallet.id}/trade"
+
     end
 
 end

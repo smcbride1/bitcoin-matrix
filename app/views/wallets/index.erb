@@ -9,7 +9,7 @@
             <input type="submit" id="create_wallet" value="Create Wallet">
         </form>
         <% @user.wallets.each do |wallet| %>
-            <a href="/wallets/<%= wallet.id %>"><h3><%= wallet.name %></h3></a>
+            <a href="/wallets/<%= wallet.id %>/trade"><h3><%= wallet.name %></h3></a>
             <h4><%= wallet.restriction_type %></h4>
             <h4><%= wallet.btc_balance %></h4>
             <h4><%= wallet.usd_balance %></h4>
