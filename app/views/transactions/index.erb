@@ -1,8 +1,8 @@
-<title>Wallets</title>
+<title>Transactions</title>
 <div class="horizontal-center">
     <h1>Transactions</h1>
     <br>
-    <% @wallet.transactions.reverse.each do |transaction| %>
+    <% @transactions.reverse.each do |transaction| %>
         <a href="/transactions/<%= transaction.id %>"><h4>[<%= transaction.created_at %>] <%= transaction.order_type %> ₿<%= transaction.amount %> at $<%= transaction.price %></h4></a>
         <br>
     <% end %>

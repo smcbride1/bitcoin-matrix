@@ -1,19 +1,19 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title><%= @wallet.name %></title>
-    </head>
-    <body>
-        <form method="GET" action="/wallets/<%= @wallet.id %>/edit">
-            <input type="submit" id="edit" value="Edit">
-        </form>
-        <form method="POST" action="/wallets/<%= @wallet.id %>">
-            <input type="hidden" name="_method" value="delete">
-            <input type="submit" id="delete" value="Delete">
-        </form>
-        <h2><%= @wallet.name %></h2>
-        <h3><%= @wallet.restriction_type %></h2>
-        <h3>BTC Balance: <%= @wallet.btc_balance %></h3>
-        <h3>USD Balance: <%= @wallet.usd_balance %></h3>
-    </body>
-</html>
+<title><%= @wallet.name %></title>
+<div class="horizontal-center">
+    <form method="GET" action="/wallets/<%= @wallet.id %>/edit">
+        <input class="button" type="submit" id="edit" value="Edit">
+    </form>
+    <br>
+    <form method="POST" action="/wallets/<%= @wallet.id %>">
+        <input type="hidden" name="_method" value="delete">
+        <input class="button" type="submit" id="delete" value="Delete">
+    </form>
+    <br>
+    <h1><%= @wallet.name %></h1>
+    <br>
+    <h3>Restriction Type: <%= @wallet.restriction_type.capitalize %></h3>
+    <br>
+    <h3>BTC Balance: <%= @wallet.btc_balance %></h3>
+    <br>
+    <h3>USD Balance: <%= @wallet.usd_balance %></h3>
+</div>

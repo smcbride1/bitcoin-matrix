@@ -1,13 +1,12 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Transaction <%= @transaction.created_at %></title>
-    </head>
-    <body>
-        <h2>Transaction</h2>
-        <h4>Time: <%= @transaction.created_at %></h4>
-        <h4>Order Type: <%= @transaction.order_type %> </h4>
-        <h4>Amount: BTC <%= @transaction.amount %></h4>
-        <h4>Price: USD <%= @transaction.price %></h4>
-    </body>
-</html>
+<title>Transaction <%= @transaction.created_at %></title>
+<div class="horizontal-center">
+    <h1>Transaction</h1>
+    <br>
+    <h3>Time: <%= @transaction.created_at %></h3>
+    <br>
+    <h3>Order Type: <%= @transaction.order_type.capitalize %> </h3>
+    <br>
+    <h3>Amount: BTC <%= @transaction.amount %></h3>
+    <br>
+    <h3>Price: USD <%= @transaction.price %></h3>
+</div>

@@ -1,25 +1,29 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Create Wallet</title>
-    </head>
-    <body>
-        <h2>Create Wallet</h2>
-        <form method="POST" action="/wallets">
-            <h3>Name</h3>
-            <input type="text" id="name" name="name">
-            <h3>Restriction Type</h3>
-            <select name="restriction_type" id="restriction_type">
-                <option value="competitive">Competitive</option>
-                <option value="casual">Casual</option>
-            </select>
-            <h3>BTC Balance</h3>
-            <h5>(Only available with casual)</h5>
-            <input type="text" id="btc_balance" name="btc_balance">
-            <h3>USD Balance</h3>
-            <h5>(Only available with casual)</h5>
-            <input type="text" id="usd_balance" name="usd_balance">
-            <input type="submit" id="submit" value="Create">
-        </form>
-    </body>
-</html>
+<title>Create Wallet</title>
+<div class="horizontal-center">
+    <h1>Create Wallet</h1>
+    <br>
+    <form method="POST" action="/wallets">
+        <h3>Name</h3>
+        <input class="textbox" type="text" id="name" name="name">
+        <br>
+        <br>
+        <h3>Restriction Type</h3>
+        <select class="textbox" name="restriction_type" id="restriction_type">
+            <option value="competitive">Competitive</option>
+            <option value="casual">Casual</option>
+        </select>
+        <br>
+        <br>
+        <h3>BTC Balance</h3>
+        <h5>(Only available with casual)</h5>
+        <input class="textbox" type="text" id="btc_balance" name="btc_balance">
+        <br>
+        <br>
+        <h3>USD Balance</h3>
+        <h5>(Only available with casual)</h5>
+        <input class="textbox" type="text" id="usd_balance" name="usd_balance">
+        <br>
+        <br>
+        <input class="button" type="submit" id="submit" value="Create">
+    </form>
+</div>

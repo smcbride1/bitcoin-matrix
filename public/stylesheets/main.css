@@ -6,6 +6,19 @@
     padding: 0;
   }
 
+  button {
+    padding: 9px 25px;
+    background-color: rgba(179, 206, 242, 1);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.3s ease 0s;
+  }
+
+  button:hover {
+    background-color: rgba(179, 206, 242, 0.8);
+  }
+
   html, body {
     height: 100%;
     width: 100%;
