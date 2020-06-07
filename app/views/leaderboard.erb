@@ -4,7 +4,7 @@
     <br>
     <% all_items = User.all.map do |user|
            wallets = user.wallets.select { |wallet| wallet.restriction_type == "competitive" }
-           wallet_value = user.wallets.map { |wallet| wallet.usd_balance + (wallet.btc_balance * Bittrex.btc_price)}.sum
+           wallet_value = wallets.map { |wallet| wallet.usd_balance + (wallet.btc_balance * Bittrex.btc_price)}.sum
            {user: user, wallet_value: wallet_value}
     end %>
     <% all_items.sort_by { |item| item[:wallet_value].to_f }.reverse.each_with_index do |sorted_item, i| %>
