@@ -1,0 +1,29 @@
+<title>Edit</title>
+<div class="horizontal-center">
+    <h1>Edit</h1>
+    <br>
+    <form method="POST" action="/users/<%= @user.id %>">
+        <input type="hidden" name="_method" value="patch">
+        <h3>Name</h3>
+        <input class="textbox" type="text" id="name" name="name" value="<%= @user.name %>">
+        <br>
+        <br>
+        <h3>Email</h3>
+        <input class="textbox" type="text" id="email" name="email" value="<%= @user.email %>">
+        <br>
+        <br>
+        <h3>Username</h3>
+        <input class="textbox" type="text" id="username" name="username" value="<%= @user.username %>">
+        <br>
+        <br>
+        <h3>Current Password</h3>
+        <input class="textbox" type="password" id="current_password" name="current_password">
+        <br>
+        <br>
+        <h3>New Password</h3>
+        <input class="textbox" type="password" id="password" name="password">
+        <br>
+        <br>
+        <input class="button" type="submit" id="submit" value="Save">
+    </form>
+</div>

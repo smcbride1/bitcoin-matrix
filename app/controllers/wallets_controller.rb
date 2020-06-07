@@ -35,20 +35,20 @@ class WalletsController < ApplicationController
 
     get "/wallets/:id" do
         @wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if @wallet.user != current_user
+        return redirect "/wallets" if @wallet.user != current_user #Checks permissions
         erb :"wallets/show"
     end
 
     get "/wallets/:id/edit" do
         @wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if @wallet.user != current_user
+        return redirect "/wallets" if @wallet.user != current_user #Checks permissions
         erb :"wallets/edit"
     end
 
     patch "/wallets/:id" do
 
         wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if wallet.user != current_user
+        return redirect "/wallets" if wallet.user != current_user #Checks permissions
 
         if wallet.restriction_type == "competitive"
             btc_balance = wallet.btc_balance
@@ -71,7 +71,7 @@ class WalletsController < ApplicationController
     delete "/wallets/:id" do
 
         wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if wallet.user != current_user
+        return redirect "/wallets" if wallet.user != current_user #Checks permissions
 
         wallet.delete
         redirect "/wallets"
@@ -81,7 +81,7 @@ class WalletsController < ApplicationController
     get "/wallets/:id/transactions" do
 
         @wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if @wallet.user != current_user
+        return redirect "/wallets" if @wallet.user != current_user #Checks permissions
 
         erb :"wallets/transactions"
 
@@ -90,7 +90,7 @@ class WalletsController < ApplicationController
     get "/wallets/:id/trade" do
 
         @wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if @wallet.user != current_user
+        return redirect "/wallets" if @wallet.user != current_user #Checks permissions
 
         erb :"wallets/trade"
 
@@ -101,7 +101,7 @@ class WalletsController < ApplicationController
         btc_price = Bittrex.btc_price
         amount = params[:buy_amount].to_f
         wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if wallet.user != current_user
+        return redirect "/wallets" if wallet.user != current_user #Checks permissions
 
         return redirect "/wallets/#{wallet.id}/trade" if 0 >= wallet.usd_balance #Makes sure usd balance is greater than 0
         return redirect "/wallets/#{wallet.id}/trade" if amount > (wallet.usd_balance / btc_price) #Makes sure desired buy amount is not greater than balance
@@ -119,7 +119,7 @@ class WalletsController < ApplicationController
         btc_price = Bittrex.btc_price
         amount = params[:sell_amount].to_f
         wallet = Wallet.find(params[:id])
-        return redirect "/wallets" if wallet.user != current_user
+        return redirect "/wallets" if wallet.user != current_user #Checks permissions
 
         return redirect "/wallets/#{wallet.id}/trade" if 0 >= wallet.btc_balance #Makes sure btc balance is greater than 0
         return redirect "/wallets/#{wallet.id}/trade" if amount > wallet.btc_balance #Makes sure desired sell amount is not greater than balance
