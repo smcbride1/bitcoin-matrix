@@ -13,8 +13,8 @@ class ApplicationController < Sinatra::Base
     erb :index
   end
 
-  get "/trade" do
-    erb :trade
+  get "/leaderboard" do
+    erb :leaderboard
   end
 
   helpers do
