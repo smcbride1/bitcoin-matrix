@@ -60,8 +60,8 @@ class UsersController < ApplicationController
     end
 
     delete "/users/:id" do
-        return redirect "/login" if current_user.id != params[:id].to_i #Checks permissions
-        User.find(params[:id]).destroy
+        user = User.find(params[:id])
+        return redirect "/login" if current_user != user #Checks permissions
         redirect "/"
     end
 
