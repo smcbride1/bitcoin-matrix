@@ -9,7 +9,7 @@
     end %>
     <% all_items.sort_by { |item| item[:wallet_value].to_f }.reverse.each_with_index do |sorted_item, i| %>
         <h2><%= i+1 %>. <%= sorted_item[:user].username %></h2>
-        <h3>Total Value: <%= sorted_item[:wallet_value] %></h3>
+        <h3>Total Value: $<%= sorted_item[:wallet_value] %></h3>
         <br>
     <% end %>
 </div>
